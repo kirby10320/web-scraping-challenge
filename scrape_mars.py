@@ -35,7 +35,7 @@ def scrape():
     from urllib.parse import urlsplit
     base_url = "{0.scheme}://{0.netloc}/".format(urlsplit(nasa_image))
     
-    xpath = "//*[@id=\"page\"]/section[3]/div/ul/li[1]/a/div/div[2]/img"
+    xpath = "https://www.jpl.nasa.gov/images/crater-dunes-39"
 
     #Use splinter to click on the mars featured image to bring the full resolution image
     results = browser.find_by_xpath(xpath)
