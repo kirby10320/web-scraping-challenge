@@ -37,8 +37,7 @@ def scrape():
     
     xpath = "//*[@id=\"page\"]/section[3]/div/ul/li[1]/a/div/div[2]/img"
 
-    #Use splinter to click on the mars featured image
-    #to bring the full resolution image
+    #Use splinter to click on the mars featured image to bring the full resolution image
     results = browser.find_by_xpath(xpath)
     img = results[0]
     img.click()
@@ -51,16 +50,7 @@ def scrape():
     full_img_url = base_url + img_url
     mars_facts_data["featured_image"] = full_img_url
     
-    # #### Mars Weather
-
-    #get mars weather's latest tweet from the website
-    url_weather = "https://twitter.com/marswxreport?lang=en"
-    browser.visit(url_weather)
-    html_weather = browser.html
-    soup = bs(html_weather, "html.parser")
-    mars_weather = soup.find("p", class_="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text
-    mars_facts_data["mars_weather"] = mars_weather
-
+   
     # #### Mars Facts
 
     url_facts = "https://space-facts.com/mars/"
