@@ -27,30 +27,7 @@ def scrape():
     mars_facts_data['news_title'] = news_title
     mars_facts_data['news_paragraph'] = news_paragraph 
     
-    #Mars Featured Image
-    nasa_image = "https://www.jpl.nasa.gov/spaceimages/?search=&category=featured#submit"
-    browser.visit(nasa_image)
-    time.sleep(2)
-
-    from urllib.parse import urlsplit
-    base_url = "{0.scheme}://{0.netloc}/".format(urlsplit(nasa_image))
-    
-    xpath = "https://www.jpl.nasa.gov/images/crater-dunes-39"
-
-    #Use splinter to click on the mars featured image to bring the full resolution image
-    results = browser.find_by_xpath(xpath)
-    img = results[0]
-    img.click()
-    time.sleep(2)
-    
-    #get image url using BeautifulSoup
-    html_image = browser.html
-    soup = bs(html_image, "html.parser")
-    img_url = soup.find("img", class_="fancybox-image")["src"]
-    full_img_url = base_url + img_url
-    mars_facts_data["featured_image"] = full_img_url
-    
-   
+       
     # #### Mars Facts
 
     url_facts = "https://space-facts.com/mars/"
